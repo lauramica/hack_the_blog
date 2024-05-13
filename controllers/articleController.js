@@ -1,5 +1,6 @@
 const { Article } = require("../models");
 const { User } = require("../models");
+const { update } = require("../models/User");
 
 const articleController = {
   index: async (req, res) => {
@@ -31,7 +32,17 @@ const articleController = {
       res.redirect("/panel/admin");
     } catch (error) {
       console.error(err);
-      res.send("Ha ocurrido un error al crear el artúclo");
+      res.send("Ha ocurrido un error al crear el artículo");
+    }
+  },
+  edit: async (req, res) => {
+    try {
+      const users = await User.findAll();
+      const article = await Article.findByPk(req.params.id);
+      res.render("editArticle", { article, users });
+    } catch (error) {
+      console.error(err);
+      res.send("Ha ocurrido un error al cargar la página");
     }
   },
 };
@@ -44,7 +55,6 @@ async function show(req, res) {}
 async function edit(req, res) {}
 
 // Update the specified resource in storage.
-async function update(req, res) {}
 
 // Remove the specified resource from storage.
 async function destroy(req, res) {}
