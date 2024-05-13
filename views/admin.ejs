@@ -12,10 +12,11 @@
     />
   </head>
   <body>
+    <%- include("partials/navbar")%>
     <div class="container mt-5">
       <div class="d-flex justify-content-between">
         <h2 class="fw-bolder">Articles</h2>
-        <a href="" class="btn btn-success">Nuevo</a>
+        <a href="http://localhost:3000/panel/articles/create" class="btn btn-success mb-4">Nuevo</a>
       </div>
 
       <table class="table table-striped border">
@@ -38,9 +39,9 @@
             <td><%= article.content %></td>
             <td><%= article.image %></td>
             <td><%= article.createdAt %></td>
-            <td><%= article.author %></td>
+            <td><%= article.userId %></td>
             <td class="text-center">
-              <a href="/articles/editar/<%=article.id%>" class="btn btn-primary">Editar</a>
+              <a href="/articles/editar/<%=article.id%>" class="btn btn-primary mb-2">Editar</a>
               <a href="/articles/eliminar/<%=article.id%>" class="btn btn-danger">Eliminar</a>
             </td>
           </tr>
@@ -48,5 +49,6 @@
         </tbody>
       </table>
     </div>
+    <%- include("partials/footer")%>
   </body>
 </html>

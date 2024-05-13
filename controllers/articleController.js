@@ -1,18 +1,46 @@
 const { Article } = require("../models");
+const { User } = require("../models");
 
-// Display a listing of the resource.
-async function index(req, res) {}
+const articleController = {
+  index: async (req, res) => {
+    try {
+      const articles = await Article.findAll();
+      return res.render("admin", {
+        articles,
+      });
+    } catch (error) {
+      console.error(err);
+      res.send("Ha ocurrido un error al acceder a los artículos.");
+    }
+  },
+  create: async (req, res) => {
+    try {
+      const users = await User.findAll();
+      return res.render("createArticle", {
+        users,
+      });
+    } catch (error) {
+      console.error(err);
+      res.send("Ha ocurrido un error al cargar la página");
+    }
+  },
+  store: async (req, res) => {
+    try {
+      const { title, content, image, userId } = req.body;
+      await Article.create({ title, content, image, userId });
+      res.redirect("/panel/admin");
+    } catch (error) {
+      console.error(err);
+      res.send("Ha ocurrido un error al crear el artúclo");
+    }
+  },
+};
 
 // Display the specified resource.
 async function show(req, res) {}
 
 // Show the form for creating a new resource
-async function create(req, res) {}
 
-// Store a newly created resource in storage.
-async function store(req, res) {}
-
-// Show the form for editing the specified resource.
 async function edit(req, res) {}
 
 // Update the specified resource in storage.
@@ -24,12 +52,4 @@ async function destroy(req, res) {}
 // Otros handlers...
 // ...
 
-module.exports = {
-  index,
-  show,
-  create,
-  store,
-  edit,
-  update,
-  destroy,
-};
+module.exports = articleController;

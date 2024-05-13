@@ -15,30 +15,29 @@
     <%- include("partials/navbar")%>
     <div class="container mt-3 shadow" style="max-width: 600px">
       <h1><strong>New article</strong></h1>
-      <form action="/articles" method="POST">
+      <form action="/panel/articles" method="POST">
         <div class="mb-3">
-          <label for="articleTitle" class="form-label">Title</label>
-          <input type="text" class="form-control" id="articleTitle" />
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="title" />
         </div>
         <div class="mb-3">
-          <label for="articleContent" class="form-label">Content</label>
-          <textarea
-            class="form-control"
-            id="articleContent"
-            name="articleContent"
-            rows="3"
-          ></textarea>
+          <label for="content" class="form-label">Content</label>
+          <textarea class="form-control" id="content" name="content" rows="3"></textarea>
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">Image</label>
           <input class="form-control" type="file" id="image" name="image" />
         </div>
-        <label for="articleAuthor" class="form-label">Select author</label>
+        <label for="userId" class="form-label">Select author</label>
         <select class="form-select mb-3" aria-label="selectAuthor">
           <option selected>Select...</option>
-          <option value="<%= user.firstname user.lastname %>">author</option>
+          <% for (const user of users) { %>
+          <option value="<%=user.id%>" name="userId">
+            <%= user.firstname%> <%=user.lastname %>
+          </option>
+          <%}%>
         </select>
-        <button class="btn btn-primary w-100 mb-3">Create</button>
+        <button type="submit" class="btn btn-primary w-100 mb-3">Create</button>
       </form>
     </div>
     <%- include("partials/footer")%>
