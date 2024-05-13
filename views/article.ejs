@@ -46,6 +46,7 @@
     <article style="height: 500px" class="container border-bottom mt-5">
       <p class="mb-4"><%= article.content%></p>
     </article>
+
     <form method="post" action="/comments">
       <input type="hidden" name="articleId" id="articleId" value="<%=article.id %>" />
       <div class="container mt-5">
@@ -54,7 +55,7 @@
           <option selected>Select author...</option>
           <%for (const user of users){%>
 
-          <option value="userId"><%=user.firstname%> <%=user.lastname%></option>
+          <option value="<%=user.id%>"><%=user.firstname%> <%=user.lastname%></option>
           <% }%>
         </select>
         <div>
