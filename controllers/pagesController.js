@@ -17,25 +17,30 @@
  */
 
 const { Article } = require("../models");
+const { User } = require("../models");
+const { Comment } = require("../models");
 
-async function showHome(req, res) {
-  const articles = await Article.findAll();
-  res.render("home", { articles });
-}
+const pageController = {
+  showHome: async (req, res) => {
+    const articles = await Article.findAll();
+    res.render("home", { articles });
+  },
 
-async function showContact(req, res) {
-  res.render("contact");
-}
+  showArticle: async (req, res) => {
+    const comments = await Comment.findAll();
+    const users = await User.findAll();
+    const article = await Article.findByPk(req.params.id);
+    res.render("article", { article, users, comments });
+  },
+  showContact: async (req, res) => {
+    res.render("contact");
+  },
 
-async function showAboutUs(req, res) {
-  res.render("aboutUs");
-}
-
+  showAboutUs: async (req, res) => {
+    res.render("aboutUs");
+  },
+};
 // Otros handlers...
 // ...
 
-module.exports = {
-  showHome,
-  showContact,
-  showAboutUs,
-};
+module.exports = pageController;

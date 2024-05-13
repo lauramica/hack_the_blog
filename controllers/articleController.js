@@ -1,6 +1,6 @@
 const { Article } = require("../models");
 const { User } = require("../models");
-const { update } = require("../models/User");
+
 
 const articleController = {
   index: async (req, res) => {

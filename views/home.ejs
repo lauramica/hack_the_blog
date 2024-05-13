@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="http://localhost:3000/css/styles.css" />
   </head>
   <body>
-    <%= include ("partials/navbar")%>
+    <%- include ("partials/navbar")%>
 
     <header>
       <div class="w-100 position-relative">
@@ -42,15 +42,20 @@
         </div>
       </div>
     </header>
-
-    <article class="container border-bottom w-50 mt-4">
-      <h2 style="width: 780px">
-        <a style="text-decoration: none; color: black; font-weight: bold; font-size: larger" href=""
-          >Man must explore, and this is exploration at its greatest</a
-        >
-      </h2>
-      <p>Creado por Marty Mcfly el 24 de setiembre, 2022</p>
-    </article>
-    <%= include ("partials/footer")%>
+    <section class="contenedor-articles">
+      <%for( const article of articles){%>
+      <article class="container border-bottom w-50 mt-4">
+        <h2 style="width: 780px">
+          <a
+            style="text-decoration: none; color: black; font-weight: bold; font-size: larger"
+            href="/articles/<%=article.id%>"
+            ><%= article.title%></a
+          >
+        </h2>
+        <p>Creado por <%=article.userId%> el <%=article.createdAt%></p>
+      </article>
+      <%}%>
+    </section>
+    <%-include ("partials/footer")%>
   </body>
 </html>

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="http://localhost:3000/css/styles.css" />
   </head>
   <body>
-    <%= include ("partials/navbar")%>
+    <%- include ("partials/navbar")%>
 
     <header>
       <div class="w-100 position-relative">
@@ -38,65 +38,46 @@
             color: white;
           "
         >
-          <h3 style="font-weight: bold; font-size: 40px">
-            Man must explore, and this is exploration at its greatest
-          </h3>
-          <p style="font-size: 15px">Creado por Marty Mcfly el 24 de setiembre, 2022</p>
+          <h1 style="font-weight: bold; font-size: 40px"><%= article.title%></h1>
+          <p style="font-size: 15px">Creado por <%= article.userId%> el <%=article.createdAt%></p>
         </div>
       </div>
     </header>
     <article style="height: 500px" class="container border-bottom mt-5">
-      <p class="mb-4">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur exercitationem,
-        repellendus sed corrupti reiciendis libero adipisci asperiores earum quo et neque amet,
-        nisi, rem cum? Magni voluptates soluta alias facilis! Porro autem odit dolore iusto debitis
-        aspernatur dolorem aliquid nesciunt quibusdam distinctio aut incidunt, dolorum fuga, minus
-        alias nisi? Ad officiis a necessitatibus commodi totam corrupti dolorem veniam assumenda
-        sequi! Obcaecati dolor, nobis praesentium architecto unde impedit explicabo non dolores
-        nemo, perferendis magnam, debitis est cumque? Corporis placeat libero similique odit non
-        repellendus modi. Placeat illo in cum autem nihil? Voluptas doloribus eaque nostrum, autem
-        ducimus iste, temporibus nemo voluptatum dicta dolore sed nobis illo tempore suscipit
-        voluptates sint molestias commodi harum, ipsam consequatur repellat placeat. Adipisci hic
-        earum eos! Mollitia ratione deserunt pariatur magnam incidunt dolorum sequi. Dolores totam
-        quam veniam iure reprehenderit maiores sequi neque, impedit alias repellat incidunt vel ea
-        amet voluptatum accusantium ipsum obcaecati molestiae consequuntur. Explicabo enim impedit
-        deleniti vitae, sed sunt quos doloribus perspiciatis sequi consequuntur hic? Error expedita
-        deleniti ipsam debitis aliquam dolore adipisci iusto unde deserunt, omnis sapiente, sunt
-        necessitatibus ad ducimus?
-      </p>
+      <p class="mb-4"><%= article.content%></p>
     </article>
-    <form>
+    <form method="post" action="/comments">
+      <input type="hidden" name="articleId" id="articleId" value="<%=article.id %>" />
       <div class="container mt-5">
         <h4 style="font-weight: bold; font-size: 18px">Add your comment</h4>
         <select class="form-select" aria-label="Default select example">
           <option selected>Select author...</option>
-          <option value="1">Author 1</option>
-          <option value="2">Author 2</option>
-          <option value="3">Author 3</option>
+          <%for( const user of users){%>
+
+          <option><%=user.firstname%> <%=user.lastname%></option>
+          <% }%>
         </select>
-        <div class="form-floating">
+        <div>
           <textarea
+            name="content"
             style="height: 150px"
             class="form-control mt-2"
             placeholder="Leave a comment here"
-            id="floatingTextarea"
+            id="content"
           ></textarea>
-          <label for="floatingTextarea">Your comment</label>
         </div>
         <button class="btn btn-primary container mt-2">Send</button>
       </div>
     </form>
     <section class="container border-bottom">
+      <h4 style="font-weight: bold">Comments <span>(2)</span></h4>
+      <% for (const comment of comments){%>
       <div class="mt-5">
-        <h4 style="font-weight: bold">Comments <span>(2)</span></h4>
-        <p>
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora facilis repellat fugit,
-          deserunt voluptatibus repudiandae quaerat perspiciatis exercitationem velit beatae optio
-          aut atque non in debitis accusantium! Itaque, porro nesciunt!""
-        </p>
-        <p style="color: grey">Michael</p>
+        <p><%=comment.content%></p>
+        <p style="color: grey"><%= comment.userId%></p>
       </div>
+      <%}%>
     </section>
-    <%= include ("partials/footer")%>
+    <%- include ("partials/footer")%>
   </body>
 </html>
