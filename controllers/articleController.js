@@ -55,6 +55,15 @@ const articleController = {
       res.send("Ha ocurrido un error al modificar el artículo");
     }
   },
+  destroy: async (req, res) => {
+    try {
+      await Article.destroy({ where: { id: req.params.id } });
+      res.redirect("/panel/admin");
+    } catch (error) {
+      console.error(err);
+      res.send("Ha ocurrido un error al eliminar el artículo");
+    }
+  },
 };
 
 // Display the specified resource.
