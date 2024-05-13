@@ -6,9 +6,9 @@ const commentController = {
       const { content, userId, articleId } = req.body;
       await Comment.create({ content, articleId, userId });
       console.log(req.body);
-      //es.redirect("/articles/:id");
-      res.send("Has creado un nuevo comentario");
+      res.redirect(`/articles/${articleId}`);
     } catch (error) {
+      console.error(err);
       res.send("Ha ocurrido un error al crear el comentario");
     }
   },

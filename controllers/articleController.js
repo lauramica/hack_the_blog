@@ -14,12 +14,14 @@ const articleController = {
       res.send("Ha ocurrido un error al acceder a los artículos.");
     }
   },
+
   show: async (req, res) => {
     const comments = await Comment.findAll();
     const users = await User.findAll();
     const article = await Article.findByPk(req.params.id);
     res.render("article", { article, users, comments });
   },
+
   create: async (req, res) => {
     try {
       const users = await User.findAll();
@@ -31,6 +33,7 @@ const articleController = {
       res.send("Ha ocurrido un error al cargar la página");
     }
   },
+
   store: async (req, res) => {
     try {
       const { title, content, image, userId } = req.body;
@@ -41,6 +44,7 @@ const articleController = {
       res.send("Ha ocurrido un error al crear el artículo");
     }
   },
+
   edit: async (req, res) => {
     try {
       const users = await User.findAll();
@@ -51,16 +55,18 @@ const articleController = {
       res.send("Ha ocurrido un error al cargar la página");
     }
   },
+
   update: async (req, res) => {
     try {
       const { title, content, image, userId } = req.body;
       await Article.update({ title, content, image, userId }, { where: { id: req.params.id } });
-      res.redirect("/admin");
+      res.redirect("/articles/admin");
     } catch (error) {
       console.error(err);
       res.send("Ha ocurrido un error al modificar el artículo");
     }
   },
+
   destroy: async (req, res) => {
     try {
       await Article.destroy({ where: { id: req.params.id } });
