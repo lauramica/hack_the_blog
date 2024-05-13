@@ -45,6 +45,16 @@ const articleController = {
       res.send("Ha ocurrido un error al cargar la página");
     }
   },
+  update: async (req, res) => {
+    try {
+      const { title, content, image, userId } = req.body;
+      await Article.update({ title, content, image, userId }, { where: { id: req.params.id } });
+      res.redirect("/panel/admin");
+    } catch (error) {
+      console.error(err);
+      res.send("Ha ocurrido un error al modificar el artículo");
+    }
+  },
 };
 
 // Display the specified resource.
