@@ -35,7 +35,7 @@ const articleController = {
     try {
       const { title, content, image, userId } = req.body;
       await Article.create({ title, content, image, userId });
-      res.redirect("/panel/admin");
+      res.redirect("/articles/admin");
     } catch (error) {
       console.error(err);
       res.send("Ha ocurrido un error al crear el artículo");
@@ -44,7 +44,7 @@ const articleController = {
   edit: async (req, res) => {
     try {
       const users = await User.findAll();
-      const article = await Article.findByPk(req.params.id, {include: User});
+      const article = await Article.findByPk(req.params.id, { include: User });
       res.render("editArticle", { article, users });
     } catch (error) {
       console.error(err);
@@ -55,7 +55,7 @@ const articleController = {
     try {
       const { title, content, image, userId } = req.body;
       await Article.update({ title, content, image, userId }, { where: { id: req.params.id } });
-      res.redirect("/panel/admin");
+      res.redirect("/admin");
     } catch (error) {
       console.error(err);
       res.send("Ha ocurrido un error al modificar el artículo");
@@ -64,7 +64,7 @@ const articleController = {
   destroy: async (req, res) => {
     try {
       await Article.destroy({ where: { id: req.params.id } });
-      res.redirect("/panel/admin");
+      res.redirect("/articles/admin");
     } catch (error) {
       console.error(err);
       res.send("Ha ocurrido un error al eliminar el artículo");
