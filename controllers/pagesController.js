@@ -26,12 +26,6 @@ const pageController = {
     res.render("home", { articles });
   },
 
-  showArticle: async (req, res) => {
-    const comments = await Comment.findAll();
-    const users = await User.findAll();
-    const article = await Article.findByPk(req.params.id);
-    res.render("article", { article, users, comments });
-  },
   showContact: async (req, res) => {
     res.render("contact");
   },

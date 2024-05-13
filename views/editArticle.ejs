@@ -50,7 +50,7 @@
         </div>
         <label for="userId" class="form-label">Select author</label>
         <select class="form-select mb-3" aria-label="selectAuthor">
-          <option selected><%=article.userId%></option>
+          <option selected><%=article.user.firstname%><%=article.user.lastname%></option>
           <%for( const user of users){%>
           <option><%= user.firstname%> <%=user.lastname %></option>
           <%}%>

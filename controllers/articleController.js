@@ -1,6 +1,6 @@
 const { Article } = require("../models");
+const { Comment } = require("../models");
 const { User } = require("../models");
-
 
 const articleController = {
   index: async (req, res) => {
@@ -13,6 +13,12 @@ const articleController = {
       console.error(err);
       res.send("Ha ocurrido un error al acceder a los artículos.");
     }
+  },
+  show: async (req, res) => {
+    const comments = await Comment.findAll();
+    const users = await User.findAll();
+    const article = await Article.findByPk(req.params.id);
+    res.render("article", { article, users, comments });
   },
   create: async (req, res) => {
     try {
@@ -38,7 +44,7 @@ const articleController = {
   edit: async (req, res) => {
     try {
       const users = await User.findAll();
-      const article = await Article.findByPk(req.params.id);
+      const article = await Article.findByPk(req.params.id, {include: User});
       res.render("editArticle", { article, users });
     } catch (error) {
       console.error(err);

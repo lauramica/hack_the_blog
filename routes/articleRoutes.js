@@ -8,9 +8,11 @@ const articleController = require("../controllers/articleController");
 /* router.get("/", articleController.index);
 router.get("/create", articleController.create);
 router.post("/", articleController.store);
-router.get("/:id", articleController.show);
+router.get("/:id", pageController.showArticle);
 router.get("/:id/editar", articleController.edit);
 router.patch("/:id", articleController.update);
 router.delete("/:id", articleController.destroy); */
+
+router.get("/:id", articleController.show);
 
 module.exports = router;

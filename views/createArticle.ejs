@@ -34,12 +34,10 @@
           <input class="form-control" type="file" id="image" name="image" />
         </div>
         <label for="userId" class="form-label">Select author</label>
-        <select class="form-select mb-3" aria-label="selectAuthor">
+        <select name="userId" class="form-select mb-3" aria-label="selectAuthor">
           <option selected>Select...</option>
           <% for (const user of users) { %>
-          <option value="<%=user.id%>" name="userId">
-            <%= user.firstname%> <%=user.lastname %>
-          </option>
+          <option value="<%=user.id%>"><%= user.firstname%> <%=user.lastname %></option>
           <%}%>
         </select>
         <button type="submit" class="btn btn-primary w-100 mb-3">Create</button>
