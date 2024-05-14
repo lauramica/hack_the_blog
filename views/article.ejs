@@ -75,11 +75,11 @@
       </div>
     </form>
     <section class="container border-bottom">
-      <h4 style="font-weight: bold">Comments <span>(2)</span></h4>
-      <% for (const comment of comments){%>
+      <h4 style="font-weight: bold">Comments</h4>
+      <% for (const comment of article.comments){%>
       <div class="mt-5">
         <p>"<%=comment.content%>"</p>
-        <p style="color: grey"><%= comment.userId%></p>
+        <p style="color: grey"><%= comment.user.firstname%> <%= comment.user.lastname%></p>
       </div>
       <%}%>
     </section>

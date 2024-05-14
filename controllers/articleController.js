@@ -3,7 +3,7 @@ const { Article, Comment, User } = require("../models");
 const articleController = {
   index: async (req, res) => {
     try {
-      const articles = await Article.findAll({include: User});
+      const articles = await Article.findAll({ include: User });
       return res.render("admin", {
         articles,
       });
@@ -14,10 +14,12 @@ const articleController = {
   },
 
   show: async (req, res) => {
-    const comments = await Comment.findAll();
     const users = await User.findAll();
-    const article = await Article.findByPk(req.params.id, {include: User});
-    res.render("article", { article, users, comments });
+    const article = await Article.findByPk(req.params.id, {
+      include: [User, { model: Comment, include: User }],
+    });
+    console.log(article);
+    res.render("article", { article, users });
   },
 
   create: async (req, res) => {
