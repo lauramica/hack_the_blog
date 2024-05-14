@@ -42,17 +42,20 @@
         </div>
       </div>
     </header>
-    <section class="contenedor-articles">
+    <section class="container">
       <%for( const article of articles){%>
-      <article class="container border-bottom w-50 mt-4">
-        <h2 style="width: 780px">
+      <article class="border-bottom mt-4">
+        <h2>
           <a
             style="text-decoration: none; color: black; font-weight: bold; font-size: larger"
             href="/articles/<%=article.id%>"
             ><%= article.title%></a
           >
         </h2>
-        <img style="width: 200px; object-fit: cover; border-radius: 20px;" src="<%= article.image%>" />
+        <img
+          style="width: 200px; object-fit: cover; border-radius: 20px"
+          src="<%= article.image%>"
+        />
         <p>
           Creado por <%=article.user.firstname%> <%=article.user.lastname%>el <%=article.createdAt%>
         </p>
