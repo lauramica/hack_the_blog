@@ -43,7 +43,7 @@
             <td><%= article.title %></td>
             <td><%= article.content %></td>
             <td><%= article.image %></td>
-            <td><%= article.createdAt %></td>
+            <td><%= moment(article.createdAt).format("Do MMMM, YYYY") %></td>
             <td><%= article.user.firstname%> <%= article.user.lastname%></td>
             <td class="text-center">
               <a href="/articles/edit/<%=article.id%>" class="btn btn-primary mb-2">Editar</a>

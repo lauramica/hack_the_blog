@@ -57,7 +57,8 @@
           src="<%= article.image%>"
         />
         <p>
-          Creado por <%=article.user.firstname%> <%=article.user.lastname%>el <%=article.createdAt%>
+          Creado por <%=article.user.firstname%> <%=article.user.lastname%>el <%=
+          moment(article.createdAt).format("Do MMMM, YYYY") %>
         </p>
       </article>
       <%}%>

@@ -20,11 +20,12 @@ const { Article } = require("../models");
 const { User } = require("../models");
 const { Comment } = require("../models");
 const fns = require("date-fns");
+const moment = require("moment");
 
 const pageController = {
   showHome: async (req, res) => {
     const articles = await Article.findAll({ include: User });
-    res.render("home", { articles });
+    res.render("home", { articles, moment });
   },
 
   showContact: async (req, res) => {

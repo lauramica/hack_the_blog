@@ -7,6 +7,7 @@ const articleController = {
       const articles = await Article.findAll({ include: User });
       return res.render("admin", {
         articles,
+        moment,
       });
     } catch (error) {
       console.error(err);
