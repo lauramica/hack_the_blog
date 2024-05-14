@@ -1,4 +1,5 @@
 const { Article, Comment, User } = require("../models");
+const moment = require("moment");
 
 const articleController = {
   index: async (req, res) => {
@@ -18,8 +19,7 @@ const articleController = {
     const article = await Article.findByPk(req.params.id, {
       include: [User, { model: Comment, include: User }],
     });
-    console.log(article);
-    res.render("article", { article, users });
+    res.render("article", { article, users, moment });
   },
 
   create: async (req, res) => {

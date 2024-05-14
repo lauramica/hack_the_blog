@@ -9,7 +9,7 @@ async function articleSeeder() {
       title: faker.lorem.sentence(5),
       content: faker.lorem.paragraphs(),
       image: faker.image.urlPicsumPhotos(),
-      userId: Math.floor(Math.random() * 50 + 1),
+      userId: faker.number.int({ min: 1, max: 50 }),
     });
   }
 

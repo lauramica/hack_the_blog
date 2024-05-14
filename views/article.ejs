@@ -40,8 +40,8 @@
         >
           <h1 style="font-weight: bold; font-size: 40px"><%= article.title%></h1>
           <p style="font-size: 15px">
-            Creado por <%= article.user.firstname%> <%= article.user.lastname%> el
-            <%=article.createdAt%>
+            Created by <%= article.user.firstname%> <%= article.user.lastname%> at <%=
+            moment(article.createdAt).format("Do MMMM, YYYY") %>
           </p>
         </div>
       </div>
@@ -79,7 +79,10 @@
       <% for (const comment of article.comments){%>
       <div class="mt-5">
         <p>"<%=comment.content%>"</p>
-        <p style="color: grey"><%= comment.user.firstname%> <%= comment.user.lastname%></p>
+        <p style="color: grey">
+          <%= comment.user.firstname%> <%= comment.user.lastname%>, <%=
+          moment(comment.createdAt).format("Do MMMM, YYYY") %>.
+        </p>
       </div>
       <%}%>
     </section>

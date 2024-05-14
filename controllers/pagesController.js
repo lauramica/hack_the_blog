@@ -19,6 +19,7 @@
 const { Article } = require("../models");
 const { User } = require("../models");
 const { Comment } = require("../models");
+const fns = require("date-fns");
 
 const pageController = {
   showHome: async (req, res) => {
