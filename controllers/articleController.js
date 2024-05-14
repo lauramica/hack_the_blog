@@ -1,5 +1,6 @@
 const { Article, Comment, User } = require("../models");
 const moment = require("moment");
+const formidable = require("formidable");
 
 const articleController = {
   index: async (req, res) => {
@@ -37,11 +38,23 @@ const articleController = {
 
   store: async (req, res) => {
     try {
-      const { title, content, image, userId } = req.body;
-      await Article.create({ title, content, image, userId });
-      res.redirect("/articles/admin");
+      const form = formidable({
+        multiples: true,
+        keepExtensions: true,
+        uploadDir: __dirname + "/../public/img",
+      });
+      form.parse(req, async (err, fields, files) => {
+        const { title, content, userId } = fields;
+        await Article.create({
+          title,
+          content,
+          userId,
+          image: files.image.newFilename,
+        });
+        res.redirect("/articles/admin");
+      });
     } catch (error) {
-      console.error(err);
+      console.error();
       res.send("Ha ocurrido un error al crear el artículo");
     }
   },
