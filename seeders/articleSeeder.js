@@ -8,8 +8,7 @@ async function articleSeeder() {
     articles.push({
       title: faker.lorem.sentence(5),
       content: faker.lorem.paragraphs(),
-      image:
-        "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAOnLXSaPbc4K0IId0dSTI050OfwusYAyfQzMiCF6mrwNPVdmN",
+      image: faker.image.urlPicsumPhotos(),
       userId: Math.floor(Math.random() * 50 + 1),
     });
   }

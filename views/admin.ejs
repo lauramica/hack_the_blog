@@ -24,7 +24,7 @@
         <a href="/articles/create" class="btn btn-success mb-4">Nuevo</a>
       </div>
 
-      <table class="table table-striped border">
+      <table class="table table-striped border table-responsive">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -44,7 +44,7 @@
             <td><%= article.content %></td>
             <td><%= article.image %></td>
             <td><%= article.createdAt %></td>
-            <td><%= article.userId %></td>
+            <td><%= article.user.firstname%> <%= article.user.lastname%></td>
             <td class="text-center">
               <a href="/articles/edit/<%=article.id%>" class="btn btn-primary mb-2">Editar</a>
               <a href="/articles/delete/<%=article.id%>" class="btn btn-danger">Eliminar</a>

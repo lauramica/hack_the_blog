@@ -3,7 +3,7 @@ const { Article, Comment, User } = require("../models");
 const articleController = {
   index: async (req, res) => {
     try {
-      const articles = await Article.findAll();
+      const articles = await Article.findAll({include: User});
       return res.render("admin", {
         articles,
       });
