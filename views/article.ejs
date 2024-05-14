@@ -42,7 +42,7 @@
     <form class="pt-4" method="post" action="/comments">
       <input type="hidden" name="articleId" id="articleId" value="<%=article.id %>" />
       <div class="container mt-3">
-        <h4 class="bold"">Add your comment</h4>
+        <h4 class="bold">Add your comment</h4>
         <select class="form-select" aria-label="Default select example" name="userId" id="userId">
           <option selected>Select author...</option>
           <%for (const user of users){%>
