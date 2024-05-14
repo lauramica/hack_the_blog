@@ -10,7 +10,7 @@ async function articleSeeder() {
       content: faker.lorem.paragraphs(),
       image:
         "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAOnLXSaPbc4K0IId0dSTI050OfwusYAyfQzMiCF6mrwNPVdmN",
-      userId: Math.floor(Math.random() * 50+1),
+      userId: Math.floor(Math.random() * 50 + 1),
     });
   }
 

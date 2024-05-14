@@ -1,6 +1,4 @@
-const { Article } = require("../models");
-const { Comment } = require("../models");
-const { User } = require("../models");
+const { Article, Comment, User } = require("../models");
 
 const articleController = {
   index: async (req, res) => {
@@ -18,7 +16,7 @@ const articleController = {
   show: async (req, res) => {
     const comments = await Comment.findAll();
     const users = await User.findAll();
-    const article = await Article.findByPk(req.params.id);
+    const article = await Article.findByPk(req.params.id, {include: User});
     res.render("article", { article, users, comments });
   },
 

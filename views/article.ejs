@@ -39,7 +39,10 @@
           "
         >
           <h1 style="font-weight: bold; font-size: 40px"><%= article.title%></h1>
-          <p style="font-size: 15px">Creado por <%= article.userId%> el <%=article.createdAt%></p>
+          <p style="font-size: 15px">
+            Creado por <%= article.user.firstname%> <%= article.user.lastname%> el
+            <%=article.createdAt%>
+          </p>
         </div>
       </div>
     </header>

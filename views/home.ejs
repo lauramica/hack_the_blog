@@ -51,8 +51,11 @@
             href="/articles/<%=article.id%>"
             ><%= article.title%></a
           >
+          <img style="width: 200px" src="<%= article.image%>" />
         </h2>
-        <p>Creado por <%=article.userId%> el <%=article.createdAt%></p>
+        <p>
+          Creado por <%=article.user.firstname%> <%=article.user.lastname%>el <%=article.createdAt%>
+        </p>
       </article>
       <%}%>
     </section>
