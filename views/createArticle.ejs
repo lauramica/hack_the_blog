@@ -18,9 +18,9 @@
   </head>
   <body>
     <%- include("partials/navbar")%>
-    <div class="container mt-3 shadow" style="max-width: 600px">
+    <div class="container mt-3 createArticle-container">
       <h1>New article</h1>
-      <form action="/articles" method="POST" enctype="multipart/form-data">
+      <form class="shadow" action="/articles" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input type="text" class="form-control" id="title" name="title" />

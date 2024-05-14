@@ -24,35 +24,37 @@
         <a href="/articles/create" class="btn btn-success mb-4">Nuevo</a>
       </div>
 
-      <table class="table table-striped border">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Content</th>
-            <th scope="col">Image</th>
-            <th scope="col">Created at</th>
-            <th scope="col">Author</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for (const article of articles) { %>
-          <tr>
-            <th><%= article.id %></th>
-            <td><%= article.title %></td>
-            <td><%= article.content %></td>
-            <td><%= article.image %></td>
-            <td><%= moment(article.createdAt).format("Do MMMM, YYYY") %></td>
-            <td><%= article.user.firstname%> <%= article.user.lastname%></td>
-            <td class="text-center">
-              <a href="/articles/edit/<%=article.id%>" class="btn btn-primary mb-2">Editar</a>
-              <a href="/articles/delete/<%=article.id%>" class="btn btn-danger">Eliminar</a>
-            </td>
-          </tr>
-          <%}%>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-striped border">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Content</th>
+              <th scope="col">Image</th>
+              <th scope="col">Created at</th>
+              <th scope="col">Author</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (const article of articles) { %>
+            <tr>
+              <th><%= article.id %></th>
+              <td><%= article.title %></td>
+              <td><%= article.content %></td>
+              <td><%= article.image %></td>
+              <td><%= moment(article.createdAt).format("Do MMMM, YYYY") %></td>
+              <td><%= article.user.firstname%> <%= article.user.lastname%></td>
+              <td class="text-center">
+                <a href="/articles/edit/<%=article.id%>" class="btn btn-primary mb-2">Editar</a>
+                <a href="/articles/delete/<%=article.id%>" class="btn btn-danger">Eliminar</a>
+              </td>
+            </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
     </div>
     <%- include("partials/footer")%>
   </body>
