@@ -17,11 +17,16 @@ const articleController = {
   },
 
   show: async (req, res) => {
-    const users = await User.findAll();
-    const article = await Article.findByPk(req.params.id, {
-      include: [User, { model: Comment, include: User }],
-    });
-    res.render("article", { article, users, moment });
+    try {
+      const users = await User.findAll();
+      const article = await Article.findByPk(req.params.id, {
+        include: [User, { model: Comment, include: User }],
+      });
+      res.render("article", { article, users, moment });
+    } catch (error) {
+      console.error(err);
+      res.send("Ha ocurrido un error al cargar el artículo");
+    }
   },
 
   create: async (req, res) => {
@@ -54,7 +59,7 @@ const articleController = {
         res.redirect("/articles/admin");
       });
     } catch (error) {
-      console.error();
+      console.error(err);
       res.send("Ha ocurrido un error al crear el artículo");
     }
   },
@@ -91,20 +96,5 @@ const articleController = {
     }
   },
 };
-
-// Display the specified resource.
-async function show(req, res) {}
-
-// Show the form for creating a new resource
-
-async function edit(req, res) {}
-
-// Update the specified resource in storage.
-
-// Remove the specified resource from storage.
-async function destroy(req, res) {}
-
-// Otros handlers...
-// ...
 
 module.exports = articleController;
