@@ -24,7 +24,7 @@ const moment = require("moment");
 
 const pageController = {
   showHome: async (req, res) => {
-    const articles = await Article.findAll({ include: User });
+    const articles = await Article.findAll({ include: User, order: [["createdAt", "DESC"]] });
     res.render("home", { articles, moment });
   },
 
