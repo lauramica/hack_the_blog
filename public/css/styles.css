@@ -1,10 +1,10 @@
 /* Create article */
 body {
-    height: 100vh
+  height: 100vh;
 }
 
 .createArticle-container {
-    height: calc(100vh - 240px);
+  height: calc(100vh - 240px);
 }
 
 
@@ -88,33 +88,33 @@ body {
 
 
 /* LINEA 90 Article - Laura */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+header {
+  background-image: linear-gradient(rgba(35, 35, 37, 0.5), rgba(0, 0, 0, 0.753)),
+    url(https://cdn.pixabay.com/photo/2017/01/18/08/25/social-media-1989152_1280.jpg);
+  height: 250px;
+  color: white;
+}
+.header-container {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.article-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.article-image {
+  width: 60vw;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+.bold {
+  font-weight: bold;
+}
+.grey {
+  color: grey;
+}
 
 /* LINEA 120 Admin/Tabla - Fede */

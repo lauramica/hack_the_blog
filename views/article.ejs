@@ -18,50 +18,31 @@
   </head>
   <body>
     <%- include ("partials/navbar")%>
-    <header>
-      <div class="w-100 position-relative">
-        <img
-          class="w-100 m-0"
-          style="height: 250px; object-fit: cover; filter: brightness(0.4)"
-          src="https://cdn.pixabay.com/photo/2017/01/18/08/25/social-media-1989152_1280.jpg"
-          alt="Imagen de blog"
-        />
-        <div
-          class="container"
-          style="
-            position: absolute;
-            width: 650px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-          "
-        >
-          <h1 style="font-weight: bold; font-size: 40px"><%= article.title%></h1>
-          <p style="font-size: 15px">
-            Created by <%= article.user.firstname%> <%= article.user.lastname%> at <%=
-            moment(article.createdAt).format("Do MMMM, YYYY") %>
-          </p>
-        </div>
+    <header class="w-100 position-relative">
+      <div class="container header-container">
+        <h1 style="font-weight: bold; font-size: 40px"><%= article.title%></h1>
+        <p style="font-size: 15px">
+          Created by <%= article.user.firstname%> <%= article.user.lastname%> at <%=
+          moment(article.createdAt).format("Do MMMM, YYYY") %>
+        </p>
       </div>
     </header>
 
-    <% if(article.image.includes("http")) { %>
-    <img style="width: 200px; object-fit: cover; border-radius: 20px" src="<%= article.image%>" />
-    <%} else { %>
-    <img
-      style="width: 200px; object-fit: cover; border-radius: 20px"
-      src="/img/<%= article.image%>"
-    />
-    <% } %>
-    <article class="container border-bottom mt-5">
+    <article class="container article-container pb-4 pt-4 border-bottom">
+      <div class="article-image-container mt-4 mb-4">
+        <% if(article.image.includes("http")) { %>
+        <img class="article-image" src="<%= article.image%>" />
+        <%} else { %>
+        <img class="article-image" src="/img/<%= article.image%>" />
+        <% } %>
+      </div>
       <p class="mb-4"><%= article.content%></p>
     </article>
 
-    <form method="post" action="/comments">
+    <form class="pt-4" method="post" action="/comments">
       <input type="hidden" name="articleId" id="articleId" value="<%=article.id %>" />
-      <div class="container mt-5">
-        <h4 style="font-weight: bold; font-size: 18px">Add your comment</h4>
+      <div class="container mt-3">
+        <h4 class="bold"">Add your comment</h4>
         <select class="form-select" aria-label="Default select example" name="userId" id="userId">
           <option selected>Select author...</option>
           <%for (const user of users){%>
@@ -77,15 +58,16 @@
             id="content"
           ></textarea>
         </div>
-        <button class="btn btn-primary container mt-2">Send</button>
+        <button class="btn btn-primary container mt-2 mb-3">Send</button>
       </div>
     </form>
-    <section class="container border-bottom">
-      <h4 style="font-weight: bold">Comments</h4>
+
+    <section class="container">
+      <h4 class="bold">Comments</h4>
       <% for (const comment of article.comments){%>
       <div class="mt-5">
         <p>"<%=comment.content%>"</p>
-        <p style="color: grey">
+        <p class="grey">
           <%= comment.user.firstname%> <%= comment.user.lastname%>, <%=
           moment(comment.createdAt).format("Do MMMM, YYYY") %>.
         </p>
