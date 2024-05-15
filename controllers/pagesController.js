@@ -36,6 +36,15 @@ const pageController = {
     failureRedirect: "/login",
   }),
 
+  logout: (req, res, next) => {
+    req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/");
+    });
+  },
+
   showContact: async (req, res) => {
     res.render("contact");
   },

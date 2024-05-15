@@ -3,8 +3,9 @@ const { Comment } = require("../models");
 const commentController = {
   store: async (req, res) => {
     try {
-      const { content, userId, articleId } = req.body;
-      await Comment.create({ content, articleId, userId });
+      const { id } = req.user;
+      const { content, articleId } = req.body;
+      await Comment.create({ content, articleId, userId: id });
       res.redirect(`/articles/${articleId}`);
     } catch (error) {
       console.error(err);

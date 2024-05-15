@@ -1,6 +1,13 @@
 <nav id="navbar" class="navbar bg-dark border" data-bs-theme="dark" id="navbar">
   <div class="container p-0">
     <a class="navbar-brand" href="/">Hack the blog</a>
-    <a class="btn btn-primary" href="/articles/admin">Admin</a>
+    <div>
+      <a class="btn btn-primary" href="/articles/admin">Admin</a>
+      <% if (loggedUser) { %>
+      <a class="btn btn-danger" href="/logout">Logout</a>
+      <% } else { %>
+      <a class="btn btn-success" href="/login">Login</a>
+      <% } %>
+    </div>
   </div>
 </nav>

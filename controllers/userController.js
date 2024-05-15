@@ -13,9 +13,8 @@ const userController = {
   store: async (req, res) => {
     try {
       const { firstname, lastname, email, password } = req.body;
-      console.log(req.body);
-      // await User.create({ firstname, lastname, email, password });
-      // return res.redirect("/");
+      await User.create({ firstname, lastname, email, password });
+      return res.redirect("/login");
     } catch (error) {
       console.error(err);
       res.send("Ha ocurrido un error al crear su usuario.");

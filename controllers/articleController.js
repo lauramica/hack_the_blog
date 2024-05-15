@@ -49,11 +49,12 @@ const articleController = {
         uploadDir: __dirname + "/../public/img",
       });
       form.parse(req, async (err, fields, files) => {
-        const { title, content, userId } = fields;
+        const { id } = req.user;
+        const { title, content } = fields;
         await Article.create({
           title,
           content,
-          userId,
+          userId: id,
           image: files.image.newFilename,
         });
         res.redirect("/articles/admin");
