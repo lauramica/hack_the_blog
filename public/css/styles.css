@@ -3,10 +3,15 @@ body {
   height: 100vh;
 }
 
+<<<<<<< HEAD
 .createArticle-container {
   height: calc(100vh - 240px);
+=======
+#createArticle-formContainer {
+    width: 70%;
+    height: 100%;
+>>>>>>> 8195671a327f0eb42f383d4471b4f5003feaec2f
 }
-
 
 
 
