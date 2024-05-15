@@ -30,6 +30,7 @@ const pageController = {
       res.send("Ha ocurrido un error al cargar los artículos");
     }
   },
+
   login: passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",

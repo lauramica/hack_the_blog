@@ -1,32 +1,26 @@
 const { User } = require("../models");
 
-// Display a listing of the resource.
-async function index(req, res) {}
+const userController = {
+  create: async (req, res) => {
+    try {
+      return res.render("createUser");
+    } catch (error) {
+      console.error(err);
+      res.send("Ha ocurrido un error al cargar el formulario.");
+    }
+  },
 
-// Display the specified resource.
-async function show(req, res) {}
-
-// Show the form for creating a new resource
-async function create(req, res) {}
-
-// Store a newly created resource in storage.
-async function store(req, res) {}
-
-// Show the form for editing the specified resource.
-async function edit(req, res) {}
-
-// Update the specified resource in storage.
-async function update(req, res) {}
-
-// Remove the specified resource from storage.
-async function destroy(req, res) {}
-
-module.exports = {
-  index,
-  show,
-  create,
-  store,
-  edit,
-  update,
-  destroy,
+  store: async (req, res) => {
+    try {
+      const { firstname, lastname, email, password } = req.body;
+      console.log(req.body);
+      // await User.create({ firstname, lastname, email, password });
+      // return res.redirect("/");
+    } catch (error) {
+      console.error(err);
+      res.send("Ha ocurrido un error al crear su usuario.");
+    }
+  },
 };
+
+module.exports = userController;
