@@ -19,49 +19,22 @@
   <body>
     <%- include ("partials/navbar")%>
 
-    <header>
-      <div class="w-100 position-relative">
-        <img
-          class="w-100 m-0"
-          style="height: 400px; object-fit: cover; filter: brightness(0.4)"
-          src="https://cdn.pixabay.com/photo/2017/01/18/08/25/social-media-1989152_1280.jpg"
-          alt="Imagen de blog"
-        />
-        <div
-          class="text-center"
-          style="
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-          "
-        >
-          <h3 style="font-weight: bold; font-size: 60px">Hack the blog</h3>
-          <p>El Blog de Hack Academy</p>
-        </div>
+    <header class="w-100 position-relative imagen-header">
+      <div class="text-center container-title">
+        <h3>Hack the blog</h3>
+        <p>El Blog de Hack Academy</p>
       </div>
     </header>
-    <section class="container">
+    <section class="container section-articles">
       <%for( const article of articles){%>
       <article class="border-bottom mt-4">
         <h2>
-          <a
-            style="text-decoration: none; color: black; font-weight: bold; font-size: larger"
-            href="/articles/<%=article.id%>"
-            ><%= article.title%></a
-          >
+          <a href="/articles/<%=article.id%>"><%= article.title%></a>
         </h2>
         <% if(article.image.includes("http")) { %>
-        <img
-          style="width: 200px; object-fit: cover; border-radius: 20px"
-          src="<%= article.image%>"
-        />
+        <img loading="lazy" src="<%= article.image%>" alt="imagen de articulo" />
         <%} else { %>
-        <img
-          style="width: 200px; object-fit: cover; border-radius: 20px"
-          src="/img/<%= article.image%>"
-        />
+        <img loading="lazy" src="/img/<%= article.image%>" alt="imagen de articulo" />
         <% } %>
         <p>
           Creado por <%=article.user.firstname%> <%=article.user.lastname%>el <%=

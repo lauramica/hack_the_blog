@@ -5,7 +5,7 @@ const formidable = require("formidable");
 const articleController = {
   index: async (req, res) => {
     try {
-      const articles = await Article.findAll({ include: User });
+      const articles = await Article.findAll({ include: User, order: [["createdAt", "DESC"]] });
       return res.render("admin", {
         articles,
         moment,

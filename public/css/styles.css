@@ -58,9 +58,39 @@ body {
 
 
 /* Home - Adrian */
-
-
-
+.section-articles{
+    width: 800px;
+  
+}
+.imagen-header{
+    background-image:  linear-gradient(rgba(35, 35, 37, 0.5), rgba(0, 0, 0, 0.753)), url("https://cdn.pixabay.com/photo/2017/01/18/08/25/social-media-1989152_1280.jpg");
+    height: 400px;
+    object-fit: cover;
+    display: flex;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.container p {
+    text-align: justify ;
+}
+.container-title h3{
+    font-weight: bold;
+    font-size: 4rem;
+}
+section a {
+    text-decoration: none; 
+    color: black; 
+    font-weight: bold; 
+    font-size: larger;
+    
+}
+article img{
+    width: 200px; 
+    object-fit: cover; 
+    border-radius: 20px
+}
 
 
 
