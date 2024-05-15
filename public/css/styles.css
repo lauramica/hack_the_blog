@@ -1,126 +1,51 @@
 /* Create article */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* lINEA 30 Edit article */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* LINEA 60 Home - Adrian */
-.section-articles{
-    width: 800px;
+/*Edit article */
+#createArticle-formContainer {
+  width: 70%;
+  height: 100%;
 }
-.imagen-header{
-    background-image:  linear-gradient(rgba(35, 35, 37, 0.5), rgba(0, 0, 0, 0.753)), url("https://cdn.pixabay.com/photo/2017/01/18/08/25/social-media-1989152_1280.jpg");
-    height: 500px;
-    object-fit: cover;
-    display: flex;
-    background-size: cover;
-    justify-content: center;
-    align-items: center;
-    color: white;
+
+/*Home - Adrian */
+.section-articles {
+  width: 800px;
+}
+.imagen-header {
+  background-image: linear-gradient(rgba(35, 35, 37, 0.5), rgba(0, 0, 0, 0.753)),
+    url("https://cdn.pixabay.com/photo/2017/01/18/08/25/social-media-1989152_1280.jpg");
+  height: 500px;
+  object-fit: cover;
+  display: flex;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 .container p {
-    text-align: justify ;
+  text-align: justify;
 }
-.container-title h1{
-    font-weight: bold;
-    font-size: 4rem;
+.container-title h1 {
+  font-weight: bold;
+  font-size: 4rem;
 }
 section a {
-    text-decoration: none; 
-    color: black; 
-    font-weight: bold; 
-    font-size: larger;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: larger;
 }
-section h2 :hover{
-    color: #0d6efd;
+section h2 :hover {
+  color: #0d6efd;
 }
-article img{
-    width: 200px; 
-    object-fit: cover; 
-    border-radius: 20px
+article img {
+  width: 200px;
+  object-fit: cover;
+  border-radius: 20px;
 }
 article p {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* LINEA 90 Article - Laura */
+/* Article - Laura */
 header {
   background-image: linear-gradient(rgba(35, 35, 37, 0.5), rgba(0, 0, 0, 0.753)),
     url(https://cdn.pixabay.com/photo/2017/01/18/08/25/social-media-1989152_1280.jpg);
