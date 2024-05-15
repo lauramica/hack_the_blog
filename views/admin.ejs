@@ -24,29 +24,29 @@
         <a href="/articles/create" class="btn btn-success mb-4">Nuevo</a>
       </div>
 
-      <div class="table-responsive">
+      <div class="container-fluid">
         <table class="table table-striped border">
           <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Title</th>
-              <th scope="col">Content</th>
-              <th scope="col">Image</th>
-              <th scope="col">Created at</th>
-              <th scope="col">Author</th>
-              <th scope="col">Actions</th>
+            <tr class="d-flex">
+              <th class="col-1">ID</th>
+              <th class="col-2">Title</th>
+              <th class="col-3">Content</th>
+              <th class="col-2">Image</th>
+              <th class="col-2">Created at</th>
+              <th class="col-1">Author</th>
+              <th class="col-1">Actions</th>
             </tr>
           </thead>
           <tbody>
             <% for (const article of articles) { %>
-            <tr>
-              <th><%= article.id %></th>
-              <td><%= article.title %></td>
-              <td><%= article.content %></td>
-              <td><%= article.image %></td>
-              <td><%= moment(article.createdAt).format("Do MMMM, YYYY") %></td>
-              <td><%= article.user.firstname%> <%= article.user.lastname%></td>
-              <td class="text-center">
+            <tr class="d-flex">
+              <th class="col-1"><%= article.id %></th>
+              <td class="col-2"><%= article.title %></td>
+              <td class="col-3"><%= article.content %></td>
+              <td class="col-2"><%= article.image %></td>
+              <td class="col-2"><%= moment(article.createdAt).format("Do MMMM, YYYY") %></td>
+              <td class="col-1"><%= article.user.firstname%> <%= article.user.lastname%></td>
+              <td class="text-center col-1">
                 <a href="/articles/edit/<%=article.id%>" class="btn btn-primary mb-2">Editar</a>
                 <a href="/articles/delete/<%=article.id%>" class="btn btn-danger">Eliminar</a>
               </td>
