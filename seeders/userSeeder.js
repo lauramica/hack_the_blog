@@ -5,11 +5,13 @@ async function userSeeder() {
   const users = [];
 
   for (let i = 0; i < 50; i++) {
+    const firstName = faker.person.firstName();
+    const lastName = faker.person.lastName();
     users.push({
-      firstname: faker.person.firstName(),
-      lastname: faker.person.lastName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
+      firstname: firstName,
+      lastname: lastName,
+      email: faker.internet.email({ firstName, lastName, provider: "gmail.com" }),
+      password: "1234",
     });
   }
 
