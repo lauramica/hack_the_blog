@@ -5,7 +5,7 @@ const moment = require("moment");
 const pageController = {
   showHome: async (req, res) => {
     try {
-      const articles = await Article.findAll({ include: User, order: [["createdAt", "DESC"]] });
+      const articles = await Article.findAll({ include: User, order: [["createdAt", "DESC"]], limit:10 });
       res.render("home", { articles, moment });
     } catch (error) {
       console.error(err);
