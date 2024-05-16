@@ -29,11 +29,11 @@
     </header>
 
     <article class="container article-container pb-4 pt-4 border-bottom">
-      <div class="article-image-container mt-4 mb-4">
+      <div class="mt-4 mb-4">
         <% if(article.image.includes("http")) { %>
-        <img class="article-image" src="<%= article.image%>" />
+        <img class="article-img" src="<%= article.image%>" />
         <%} else { %>
-        <img class="article-image" src="/img/<%= article.image%>" />
+        <img class="article-img" src="/img/<%= article.image%>" />
         <% } %>
       </div>
       <p class="mb-4"><%= article.content%></p>
@@ -43,6 +43,7 @@
       <input type="hidden" name="articleId" id="articleId" value="<%=article.id %>" />
       <div class="container mt-3">
         <h4 class="bold">Add your comment</h4>
+
         <div>
           <textarea
             name="content"
@@ -52,14 +53,14 @@
             id="content"
           ></textarea>
         </div>
-        <button class="btn btn-primary container mt-2 mb-3">Send</button>
+        <button class="btn btn-primary mt-2 mb-3">Send</button>
       </div>
     </form>
 
     <section class="container">
-      <h4 class="bold">Comments</h4>
+      <h4 class="bold mb-4">Comments</h4>
       <% for (const comment of article.comments){%>
-      <div class="mt-5">
+      <div class="mb-4">
         <p>"<%=comment.content%>"</p>
         <p class="grey">
           <%= comment.user.firstname%> <%= comment.user.lastname%>, <%=
@@ -68,6 +69,7 @@
       </div>
       <%}%>
     </section>
-    <%- include ("partials/footer")%>
+
+    <%- include ("partials/footerRelative")%>
   </body>
 </html>

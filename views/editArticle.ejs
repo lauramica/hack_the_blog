@@ -19,7 +19,7 @@
   <body>
     <%- include("partials/navbar") %>
 
-    <div class="container mt-3 shadow" style="max-width: 600px">
+    <div class="container form-container shadow rounded">
       <h1>Edit article <%= article.id %></h1>
       <form action="/articles/edit/<%= article.id %>" method="POST">
         <div class="mb-3">
@@ -52,6 +52,6 @@
       </form>
     </div>
 
-    <%- include("partials/footer") %>
+    <%- include("partials/footerAbsolute")%>
   </body>
 </html>

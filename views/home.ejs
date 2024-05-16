@@ -19,30 +19,33 @@
   <body>
     <%- include ("partials/navbar")%>
 
-    <header class="w-100 position-relative imagen-header">
+    <header class="position-relative home-header">
       <div class="text-center container-title">
         <h1>Hack the blog</h1>
-        <p>El Blog de Hack Academy</p>
+        <p>The Hack Academy's blog</p>
       </div>
     </header>
-    <section class="container section-articles">
+    <div class="container section-articles mt-4">
       <%for( const article of articles){%>
-      <article class="border-bottom mt-4">
-        <h2>
-          <a href="/articles/<%=article.id%>"><%= article.title%></a>
-        </h2>
+      <article class="border-bottom mt-1">
         <% if(article.image.includes("http")) { %>
-        <img loading="lazy" src="<%= article.image%>" alt="imagen de articulo" />
+        <img loading="lazy" src="<%= article.image%>" alt="imagen de artículo" />
         <%} else { %>
-        <img loading="lazy" src="/img/<%= article.image%>" alt="imagen de articulo" />
+        <img loading="lazy" src="/img/<%= article.image%>" alt="imagen de artículo" />
         <% } %>
-        <p>
-          Creado por <%=article.user.firstname%> <%=article.user.lastname%>el <%=
-          moment(article.createdAt).format("Do MMMM, YYYY") %>
-        </p>
+        <div>
+          <h2>
+            <a href="/articles/<%=article.id%>"><%= article.title%></a>
+          </h2>
+          <p>
+            Created by <%=article.user.firstname%> <%=article.user.lastname%> at <%=
+            moment(article.createdAt).format("Do MMMM, YYYY") %>
+          </p>
+        </div>
       </article>
       <%}%>
-    </section>
-    <%-include ("partials/footer")%>
+    </div>
+
+    <%-include ("partials/footerRelative")%>
   </body>
 </html>

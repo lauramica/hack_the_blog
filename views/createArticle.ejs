@@ -18,7 +18,7 @@
   </head>
   <body>
     <%- include("partials/navbar")%>
-    <div id="createArticle-formContainer" class="container mt-3">
+    <div class="container form-container shadow rounded">
       <h1>New article</h1>
       <form action="/articles" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
@@ -34,9 +34,10 @@
           <input class="form-control" type="file" id="image" name="image" />
         </div>
         <label for="userId" class="form-label">Select author</label>
-        <button type="submit" class="btn btn-primary w-100 mb-3">Create</button>
+        <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Create</button>
       </form>
     </div>
-    <%- include("partials/footer")%>
+
+    <%- include("partials/footerAbsolute")%>
   </body>
 </html>
