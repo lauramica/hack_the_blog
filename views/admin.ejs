@@ -20,45 +20,43 @@
     <%- include("partials/navbar")%>
     <div class="container mt-5">
       <div class="d-flex justify-content-between">
-        <h2 class="fw-bolder">Articles</h2>
+        <h2 class="bold">Articles</h2>
         <a href="/articles/create" class="btn btn-success mb-4">Create new article</a>
       </div>
 
-      <div class="container-fluid">
-        <table class="table table-striped border">
-          <thead>
-            <tr class="d-flex">
-              <th class="col-1">ID</th>
-              <th class="col-2">Title</th>
-              <th class="col-3">Content</th>
-              <th class="col-2">Image</th>
-              <th class="col-2">Created at</th>
-              <th class="col-1">Author</th>
-              <th class="col-1">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% for (const article of articles) { %>
-            <tr class="d-flex">
-              <th class="col-1"><%= article.id %></th>
-              <td class="col-2"><%= article.title %></td>
-              <td class="col-3"><%= article.content %></td>
-              <td class="col-2"><%= article.image %></td>
-              <td class="col-2"><%= moment(article.createdAt).format("Do MMMM, YYYY") %></td>
-              <td class="col-1"><%= article.user.firstname%> <%= article.user.lastname%></td>
-              <td class="text-center col-1 gap-2">
-                <a href="/articles/edit/<%=article.id%>" class="btn btn-primary table-button"
-                  >Editar</a
-                >
-                <a href="/articles/delete/<%=article.id%>" class="btn btn-danger mt-2 table-button"
-                  >Eliminar</a
-                >
-              </td>
-            </tr>
-            <%}%>
-          </tbody>
-        </table>
-      </div>
+      <table class="table table-striped border">
+        <thead>
+          <tr class="d-flex">
+            <th class="col-1">ID</th>
+            <th class="col-2">Title</th>
+            <th class="col-3">Content</th>
+            <th class="col-2">Image</th>
+            <th class="col-2">Created at</th>
+            <th class="col-1">Author</th>
+            <th class="col-1">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (const article of articles) { %>
+          <tr class="d-flex">
+            <th class="col-1"><%= article.id %></th>
+            <td class="col-2"><%= article.title %></td>
+            <td class="col-3"><%= article.content %></td>
+            <td class="col-2"><%= article.image %></td>
+            <td class="col-2"><%= moment(article.createdAt).format("Do MMMM, YYYY") %></td>
+            <td class="col-1"><%= article.user.firstname%> <%= article.user.lastname%></td>
+            <td class="text-center col-1 gap-2">
+              <a href="/articles/edit/<%=article.id%>" class="btn btn-primary table-button"
+                >Editar</a
+              >
+              <a href="/articles/delete/<%=article.id%>" class="btn btn-danger mt-2 table-button"
+                >Eliminar</a
+              >
+            </td>
+          </tr>
+          <%}%>
+        </tbody>
+      </table>
     </div>
 
     <%- include("partials/footerRelative")%>
