@@ -1,9 +1,22 @@
-<nav id="navbar" class="navbar bg-dark border" data-bs-theme="dark" id="navbar">
+<nav class="navbar bg-dark fixed-top border" data-bs-theme="dark">
   <div class="container p-0">
     <a class="navbar-brand" href="/">Hack the blog</a>
-    <div>
+    <div class="d-flex">
       <% if (loggedUser) { %>
-      <a class="btn btn-primary" href="/articles/admin">Admin</a>
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle me-1"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Admin
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/users">Users</a></li>
+          <li><a class="dropdown-item" href="/articles/admin">Articles</a></li>
+        </ul>
+      </div>
       <a class="btn btn-danger" href="/logout">Logout</a>
       <% } else { %>
       <a class="btn btn-success" href="/login">Login</a>

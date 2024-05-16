@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit article | Hack the blog</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="http://localhost:3000/css/styles.css" />
+  </head>
+  <body>
+    <%- include("partials/navbar") %>
+
+    <div class="above-footer">
+      <div class="container form-container shadow rounded">
+        <h1>Edit user</h1>
+        <form action="/users/edit/<%= user.id %>" method="POST">
+          <div class="mb-3">
+            <label for="firstname" class="form-label">Firstname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              name="firstname"
+              value="<%= user.firstname %>"
+            />
+          </div>
+          <div>
+            <label for="lastname" class="form-label">Lastname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              name="lastname"
+              value="<%= user.lastname %>"
+            />
+          </div>
+          <div>
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              value="<%= user.email %>"
+            />
+          </div>
+          <div>
+            <label for="role" class="form-label">Role</label>
+            <select class="form-select" name="role" id="role">
+              Role
+              <option selected><%= user.role %></option>
+              <option value="<%user.role.lector%>">Lector</option>
+              <option value="<%user.role.blogger%>">Blogger</option>
+              <option value="<%user.role.admin%>">Admin</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-primary w-100 mt-3">Edit</button>
+          </div>
+        </form>
+        <div><a class="btn btn-success mb-2" href="">Admin articles</a></div>
+        <div><a class="btn btn-danger mb-2" href="/users/delete/<%=user.id%>">Delete user</a></div>
+      </div>
+    </div>
+
+    <%- include("partials/footer")%>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

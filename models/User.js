@@ -26,11 +26,11 @@ class User extends Model {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        role:{
-          type: DataTypes.ENUM("Lector", "Admin", "Escritor"),
+        role: {
+          type: DataTypes.ENUM("Lector", "Blogger", "Admin"),
           allowNull: false,
-          defaultValue: "Lector"
-        }
+          defaultValue: "Lector",
+        },
       },
       {
         sequelize,

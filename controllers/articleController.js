@@ -1,12 +1,12 @@
 const { Article, Comment, User } = require("../models");
-const moment = require("moment");
-const formidable = require("formidable");
+const moment = require("moment"); //date
+const formidable = require("formidable"); //files
 
 const articleController = {
   index: async (req, res) => {
     try {
       const articles = await Article.findAll({ include: User, order: [["createdAt", "DESC"]] });
-      return res.render("admin", {
+      return res.render("adminArticles", {
         articles,
         moment,
       });
@@ -80,7 +80,7 @@ const articleController = {
     try {
       const { title, content, image, userId } = req.body;
       await Article.update({ title, content, image, userId }, { where: { id: req.params.id } });
-      res.redirect("/articles/admin");
+      res.redirect("/users");
     } catch (error) {
       console.error(err);
       res.send("Ha ocurrido un error al modificar el artículo");

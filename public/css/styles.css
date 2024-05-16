@@ -1,8 +1,15 @@
 body {
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.above-footer {
+  margin-top: 58px;
 }
 
 header {
+  margin-top: 58px;
   width: 100vw;
   background-image: linear-gradient(rgba(35, 35, 37, 0.5), rgba(0, 0, 0, 0.753)),
     url(https://cdn.pixabay.com/photo/2017/01/18/08/25/social-media-1989152_1280.jpg);
@@ -11,34 +18,8 @@ header {
   color: white;
 }
 
-footer {
-  height: 200px;
-  width: 100vw;
-}
-
-.relative {
-  position: relative;
-  bottom: 0;
-}
-
-.absolute {
-  position: absolute;
-  bottom: 0;
-}
-
-.btn {
-  font-size: 0.9rem;
-}
-
-.form-container {
-  width: 70vw;
-  position: absolute;
-  left: 15vw;
-  top: calc((100% - 45vh - 200px) / 2);
-}
-
 .home-header {
-  height: 500px;
+  height: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,6 +27,33 @@ footer {
 
 .home-header p {
   font-size: 1.5rem;
+}
+
+footer {
+  margin-top: auto;
+  height: 200px;
+  width: 100vw;
+}
+
+.btn {
+  font-size: 0.9rem;
+}
+
+.form-container {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner-form-container {
+  width: 70vw;
+  padding: 2rem;
+}
+
+.login-form-container {
+  width: 55vw;
+  padding: 3rem;
 }
 
 .section-articles {

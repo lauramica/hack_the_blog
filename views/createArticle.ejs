@@ -18,26 +18,33 @@
   </head>
   <body>
     <%- include("partials/navbar")%>
-    <div class="container form-container shadow rounded">
-      <h1>New article</h1>
-      <form action="/articles" method="POST" enctype="multipart/form-data">
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title" name="title" />
-        </div>
-        <div class="mb-3">
-          <label for="content" class="form-label">Content</label>
-          <textarea class="form-control" id="content" name="content" rows="3"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="image" class="form-label">Image</label>
-          <input class="form-control" type="file" id="image" name="image" />
-        </div>
-        <label for="userId" class="form-label">Select author</label>
-        <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Create</button>
-      </form>
+    <div class="container form-container above-footer">
+      <div class="inner-form-container shadow rounded">
+        <h1>New article</h1>
+        <form action="/articles" method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" />
+          </div>
+          <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input class="form-control" type="file" id="image" name="image" />
+          </div>
+          <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Create</button>
+        </form>
+      </div>
     </div>
 
-    <%- include("partials/footerAbsolute")%>
+    <%- include("partials/footer")%>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
