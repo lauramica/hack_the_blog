@@ -110,3 +110,13 @@ article img {
 .table-button {
   font-size: 0.9rem;
 }
+
+.editButton {
+  width: 100%;
+}
+
+.divButtonsAdmin {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

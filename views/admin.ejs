@@ -46,12 +46,18 @@
             <td class="col-2"><%= moment(article.createdAt).format("Do MMMM, YYYY") %></td>
             <td class="col-1"><%= article.user.firstname%> <%= article.user.lastname%></td>
             <td class="text-center col-1 gap-2">
-              <a href="/articles/edit/<%=article.id%>" class="btn btn-primary table-button"
-                >Editar</a
-              >
-              <a href="/articles/delete/<%=article.id%>" class="btn btn-danger mt-2 table-button"
-                >Eliminar</a
-              >
+              <div class="d-grid gap-2 col-6 mx-auto divButtonsAdmin">
+                <a
+                  href="/articles/edit/<%=article.id%>"
+                  class="btn btn-primary table-button editButton"
+                  >Editar</a
+                >
+                <a
+                  href="/articles/delete/<%=article.id%>"
+                  class="btn btn-danger table-button deleteButton"
+                  >Eliminar</a
+                >
+              </div>
             </td>
           </tr>
           <%}%>
