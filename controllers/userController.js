@@ -12,8 +12,8 @@ const userController = {
 
   store: async (req, res) => {
     try {
-      const { firstname, lastname, email, password } = req.body;
-      await User.create({ firstname, lastname, email, password });
+      const { firstname, lastname, email, password, role } = req.body;
+      await User.create({ firstname, lastname, email, password, role });
       return res.redirect("/login");
     } catch (error) {
       console.error(err);

@@ -29,6 +29,7 @@ function passportConfig(app) {
         }
 
         console.log("Credenciales verificadas correctamente");
+        console.log()
         return cb(null, user);
       } catch (error) {
         cb(null, false, { message: "Ocurrió un error inesperado. Por favor, reintentar." });
