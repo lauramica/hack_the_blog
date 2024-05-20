@@ -43,14 +43,7 @@
               <td class="col-2"><%= user.firstname %></td>
               <td class="col-3"><%= user.lastname %></td>
               <td class="col-2"><%= user.email %></td>
-              <td class="col-2">
-                <select class="form-select" name="role" id="role">
-                  <option selected><%= user.role %></option>
-                  <option value="<%user.role.lector%>">Lector</option>
-                  <option value="<%user.role.blogger%>">Blogger</option>
-                  <option value="<%user.role.admin%>">Admin</option>
-                </select>
-              </td>
+              <td class="col-2"><%=user.role.name%></td>
               <td class="col-1"><%= moment(user.createdAt).format("Do MMMM, YYYY") %></td>
               <td class="text-center col-1 gap-2">
                 <div class="d-grid gap-2 col-6 mx-auto divButtonsAdmin">

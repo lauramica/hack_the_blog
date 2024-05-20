@@ -1,10 +1,12 @@
 const { User } = require("../models");
+const { Role } = require("../models");
+const { Comment } = require("../models");
 const moment = require("moment"); //date
 
 const userController = {
   index: async (req, res) => {
     try {
-      const users = await User.findAll();
+      const users = await User.findAll({ include: Role });
       return res.render("adminUsers", {
         users,
         moment,
@@ -17,7 +19,7 @@ const userController = {
 
   show: async (req, res) => {
     try {
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.params.id, { include: Role });
       res.render("userProfile", { user });
     } catch (error) {
       console.error(err);
@@ -47,8 +49,9 @@ const userController = {
 
   edit: async (req, res) => {
     try {
+      const roles = await Role.findAll();
       const user = await User.findByPk(req.params.id);
-      res.render("editUser", { user });
+      res.render("editUser", { user, roles });
     } catch (error) {
       console.error(err);
       res.send("Ha ocurrido un error al cargar la página");
@@ -58,11 +61,11 @@ const userController = {
   update: async (req, res) => {
     try {
       const { firstname, lastname, email, role } = req.body;
+      console.log(req.body);
       await User.update({ firstname, lastname, email, role }, { where: { id: req.params.id } });
 
-      res.redirect("/users")
+      res.redirect("/users");
       // en el redirect poner un ternario como este: (true? "A" : "B")
-
     } catch (error) {
       console.error(err);
       res.send("Ha ocurrido un error al modificar el artículo");
@@ -71,10 +74,11 @@ const userController = {
 
   destroy: async (req, res) => {
     try {
+      await Comment.destroy({ where: { userId: req.params.id } });
+      await Article.destroy({ where: { userId: req.params.id } });
       await User.destroy({ where: { id: req.params.id } });
       res.redirect("/");
     } catch (error) {
-      console.error(err);
       res.send("Ha ocurrido un error al eliminar el usuario");
     }
   },

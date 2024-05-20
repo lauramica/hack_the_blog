@@ -57,10 +57,10 @@
             <label for="role" class="form-label">Role</label>
             <select class="form-select" name="role" id="role">
               Role
-              <option selected><%= user.role %></option>
-              <option value="<%user.role.lector%>">Lector</option>
-              <option value="<%user.role.blogger%>">Blogger</option>
-              <option value="<%user.role.admin%>">Admin</option>
+              <option selected><%= user.roleId %></option>
+              <option value="<%user.roleId.reader%>">Reader</option>
+              <option value="<%user.roleId.blogger%>">Blogger</option>
+              <option value="<%user.roleId.admin%>">Admin</option>
             </select>
           </div>
           <div class="mb-3">

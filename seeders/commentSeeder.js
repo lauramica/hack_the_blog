@@ -7,8 +7,8 @@ async function commentSeeder() {
   for (let i = 0; i < 50; i++) {
     comments.push({
       content: faker.lorem.lines(3),
-      articleId: faker.number.int({ min: 1, max: 50 }),
-      userId: faker.number.int({ min: 1, max: 50 }),
+      articleId: faker.number.int({ min: 1, max: 25 }),
+      userId: faker.number.int({ min: 1, max: 31 }),
     });
   }
 

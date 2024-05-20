@@ -4,12 +4,12 @@ const { Article } = require("../models");
 async function articleSeeder() {
   const articles = [];
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 25; i++) {
     articles.push({
       title: faker.lorem.sentence(5),
       content: faker.lorem.paragraphs(),
       image: faker.image.urlPicsumPhotos(),
-      userId: faker.number.int({ min: 1, max: 50 }),
+      userId: faker.number.int({ min: 1, max: 10 }),
     });
   }
 
