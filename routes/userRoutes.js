@@ -12,11 +12,3 @@ router.get("/delete/:id", ensureIsAuthenticated, userController.destroy);
 router.get("/:id", userController.show);
 
 module.exports = router;
-
-/* router.get("/admin", ensureIsAuthenticated, articleController.index);
-router.get("/create", ensureIsAuthenticated, articleController.create);
-router.post("/", ensureIsAuthenticated, articleController.store);
-router.get("/edit/:id", ensureIsAuthenticated, articleController.edit);
-router.post("/edit/:id", ensureIsAuthenticated, articleController.update);
-router.get("/delete/:id", ensureIsAuthenticated, articleController.destroy);
-router.get("/:id", articleController.show); */

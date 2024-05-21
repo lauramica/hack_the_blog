@@ -1,6 +1,5 @@
-const { User } = require("../models");
-const { Role } = require("../models");
-const { Comment } = require("../models");
+const { User, Role, Article, Comment } = require("../models");
+
 const moment = require("moment"); //date
 
 const userController = {
@@ -11,7 +10,7 @@ const userController = {
         users,
         moment,
       });
-    } catch (error) {
+    } catch (err) {
       console.error(err);
       res.send("Ha ocurrido un error al acceder a los artículos.");
     }
@@ -21,7 +20,7 @@ const userController = {
     try {
       const user = await User.findByPk(req.params.id, { include: Role });
       res.render("userProfile", { user });
-    } catch (error) {
+    } catch (err) {
       console.error(err);
       res.send("Ha ocurrido un error al cargar el perfil");
     }
@@ -30,7 +29,7 @@ const userController = {
   create: async (req, res) => {
     try {
       return res.render("createUser");
-    } catch (error) {
+    } catch (err) {
       console.error(err);
       res.send("Ha ocurrido un error al cargar el formulario.");
     }
@@ -38,10 +37,10 @@ const userController = {
 
   store: async (req, res) => {
     try {
-      const { firstname, lastname, email, password, role } = req.body;
-      await User.create({ firstname, lastname, email, password, role });
+      const { firstname, lastname, email, password } = req.body;
+      await User.create({ firstname, lastname, email, password, roleId: "3" });
       return res.redirect("/login");
-    } catch (error) {
+    } catch (err) {
       console.error(err);
       res.send("Ha ocurrido un error al crear su usuario.");
     }
@@ -52,7 +51,7 @@ const userController = {
       const roles = await Role.findAll();
       const user = await User.findByPk(req.params.id);
       res.render("editUser", { user, roles });
-    } catch (error) {
+    } catch (err) {
       console.error(err);
       res.send("Ha ocurrido un error al cargar la página");
     }
@@ -60,13 +59,13 @@ const userController = {
 
   update: async (req, res) => {
     try {
-      const { firstname, lastname, email, role } = req.body;
-      console.log(req.body);
-      await User.update({ firstname, lastname, email, role }, { where: { id: req.params.id } });
+      const { firstname, lastname, email, roleId } = req.body;
+      const { id } = req.params;
+
+      await User.update({ firstname, lastname, email, roleId }, { where: { id } });
 
       res.redirect("/users");
-      // en el redirect poner un ternario como este: (true? "A" : "B")
-    } catch (error) {
+    } catch (err) {
       console.error(err);
       res.send("Ha ocurrido un error al modificar el artículo");
     }
@@ -74,11 +73,10 @@ const userController = {
 
   destroy: async (req, res) => {
     try {
-      await Comment.destroy({ where: { userId: req.params.id } });
       await Article.destroy({ where: { userId: req.params.id } });
       await User.destroy({ where: { id: req.params.id } });
-      res.redirect("/");
-    } catch (error) {
+      res.redirect("/users");
+    } catch (err) {
       res.send("Ha ocurrido un error al eliminar el usuario");
     }
   },

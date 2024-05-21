@@ -12,6 +12,9 @@ class Comment extends Model {
       {
         sequelize,
         modelName: "comment",
+        deletedAt: "deletedAt",
+        paranoid: true,
+        timestamps: true,
       },
     );
     return Comment;

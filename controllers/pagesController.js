@@ -9,7 +9,6 @@ const pageController = {
       const articles = await Article.findAll({
         include: User,
         order: [["createdAt", "DESC"]],
-        limit: 10,
       });
       res.render("home", { articles, moment });
     } catch (error) {
@@ -22,7 +21,6 @@ const pageController = {
       const articles = await Article.findAll({
         include: User,
         order: [["createdAt", "DESC"]],
-        limit: 10,
       });
       res.render("login", { articles });
     } catch (error) {
