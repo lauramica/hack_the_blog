@@ -2,10 +2,10 @@ const userRoutes = require("./userRoutes");
 const articleRoutes = require("./articleRoutes");
 const commentRoutes = require("./commentRoutes");
 const pagesRoutes = require("./pagesRoutes");
-const makeUserAvaibleInViews = require("../middlewares/makeUserAvaibleInViews");
+const viewsFilter = require("../middlewares/viewsFilter");
 
 module.exports = (app) => {
-  app.use(makeUserAvaibleInViews);
+  app.use(viewsFilter);
 
   app.use("/users", userRoutes);
   app.use("/articles", articleRoutes);

@@ -1,7 +1,7 @@
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const { User } = require("./models");
+const { User, Role } = require("./models");
 
 function passportConfig(app) {
   app.use(
@@ -29,7 +29,7 @@ function passportConfig(app) {
         }
 
         console.log("Credenciales verificadas correctamente");
-        console.log()
+        console.log();
         return cb(null, user);
       } catch (error) {
         cb(null, false, { message: "Ocurrió un error inesperado. Por favor, reintentar." });
@@ -43,7 +43,7 @@ function passportConfig(app) {
 
   passport.deserializeUser(async (id, cb) => {
     try {
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(id, { include: "role" });
       cb(null, user); // Usuario queda disponible en req.user.
     } catch (err) {
       cb(err);

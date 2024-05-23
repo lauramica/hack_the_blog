@@ -10,9 +10,9 @@ const articleController = {
         articles,
         moment,
       });
-    } catch (error) {
+    } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al acceder a los artículos.");
+      return res.send("Failed to show the articles admin ");
     }
   },
 
@@ -22,10 +22,10 @@ const articleController = {
       const article = await Article.findByPk(req.params.id, {
         include: [User, { model: Comment, include: User }],
       });
-      res.render("article", { article, users, moment });
-    } catch (error) {
+      return res.render("article", { article, users, moment });
+    } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al cargar el artículo");
+      return res.send("Failed to show the article");
     }
   },
 
@@ -35,9 +35,9 @@ const articleController = {
       return res.render("createArticle", {
         users,
       });
-    } catch (error) {
+    } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al cargar la página");
+      return res.send("Failed to show the page");
     }
   },
 
@@ -57,11 +57,11 @@ const articleController = {
           userId: id,
           image: files.image.newFilename,
         });
-        res.redirect("/articles/admin");
+        return res.redirect("/articles/admin");
       });
-    } catch (error) {
+    } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al crear el artículo");
+      return res.send("Failed to create the article");
     }
   },
 
@@ -70,9 +70,9 @@ const articleController = {
       const users = await User.findAll();
       const article = await Article.findByPk(req.params.id, { include: User });
       res.render("editArticle", { article, users });
-    } catch (error) {
+    } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al cargar la página");
+      return res.send("Failed to show the page");
     }
   },
 
@@ -80,20 +80,20 @@ const articleController = {
     try {
       const { title, content, image, userId } = req.body;
       await Article.update({ title, content, image, userId }, { where: { id: req.params.id } });
-      res.redirect("/users");
-    } catch (error) {
+      return res.redirect("/users");
+    } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al modificar el artículo");
+      return res.send("Failed to edit the article");
     }
   },
 
   destroy: async (req, res) => {
     try {
       await Article.destroy({ where: { id: req.params.id } });
-      res.redirect("/articles/admin");
-    } catch (error) {
+      return res.redirect("/articles/admin");
+    } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al eliminar el artículo");
+      return res.send("Failed to delete the article");
     }
   },
 };

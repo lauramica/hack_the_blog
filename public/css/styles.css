@@ -56,10 +56,6 @@ footer {
   padding: 3rem;
 }
 
-.section-articles {
-  width: 60vw;
-}
-
 .container-title h1 {
   font-weight: bold;
   font-size: 4rem;
@@ -76,18 +72,18 @@ footer {
   color: #0d6efd;
 }
 
-article {
+.article-container {
   height: 250px;
   display: flex;
   align-items: center;
 }
 
-article img {
+.article-container img {
   margin-right: 30px;
   float: left;
   width: 250px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 .header-container {
@@ -97,14 +93,15 @@ article img {
   justify-content: center;
 }
 
-.article-container {
-  height: 50vh;
-}
-
 .article-img {
+  float: left;
   width: 30vw;
   height: 22vw;
   object-fit: cover;
+}
+
+.justify {
+  text-align: justify;
 }
 
 .bold {
@@ -115,16 +112,24 @@ article img {
   color: grey;
 }
 
-.table-button {
-  font-size: 0.9rem;
+.line-clamp {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 160px;
+  white-space: nowrap;
 }
 
-.editButton {
-  width: 100%;
+.table-img {
+  width: 100px;
+}
+
+td,
+th {
+  vertical-align: middle;
 }
 
 .divButtonsAdmin {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  font-size: 0.9rem;
 }

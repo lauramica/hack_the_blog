@@ -1,26 +1,54 @@
-<nav class="navbar bg-dark fixed-top border" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-dark fixed-top border" data-bs-theme="dark">
   <div class="container p-0">
     <a class="navbar-brand" href="/">Hack the blog</a>
-    <div class="d-flex">
-      <% if (loggedUser) { %>
-      <div class="dropdown">
-        <button
-          class="btn btn-secondary dropdown-toggle me-1"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Admin
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="/users">Users</a></li>
-          <li><a class="dropdown-item" href="/articles/admin">Articles</a></li>
-        </ul>
-      </div>
-      <a class="btn btn-danger" href="/logout">Logout</a>
-      <% } else { %>
-      <a class="btn btn-success" href="/login">Login</a>
-      <% } %>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <% if (loggedUser) { if (loggedUser.role.code >= 300){%>
+        <li class="nav-item">
+          <div class="dropdown">
+            <button
+              class="btn btn-dark dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Admin
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="/users">Users</a></li>
+              <li><a class="dropdown-item" href="/articles/admin">Articles</a></li>
+            </ul>
+          </div>
+        </li>
+        <%} if (loggedUser.role.code >= 200){%>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/articles/create">Create article</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/users/<%=loggedUser.id%>"
+            >User profile</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+        </li>
+        <% } } else { %>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/login">Login</a>
+        </li>
+        <% } %>
+      </ul>
     </div>
   </div>
 </nav>

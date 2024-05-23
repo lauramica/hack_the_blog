@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home | Hack the blog</title>
+    <title>Hack the blog | The Hack Academy's blog</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -25,11 +25,11 @@
         <p>The Hack Academy's blog</p>
       </div>
     </header>
-    <div class="container section-articles mt-4">
+    <div class="container section-articles p-0 mt-4">
       <%for( const article of articles){%>
-      <article class="border-bottom mt-1">
+      <div class="article-container border-bottom">
         <% if(article.image.includes("http")) { %>
-        <img loading="lazy" src="<%= article.image%>" alt="imagen de artículo" />
+        <img loading="lazy" src="<%= article.image%>" alt="article image" />
         <%} else { %>
         <img loading="lazy" src="/img/<%= article.image%>" alt="imagen de artículo" />
         <% } %>
@@ -42,7 +42,7 @@
             moment(article.createdAt).format("Do MMMM, YYYY") %>
           </p>
         </div>
-      </article>
+      </div>
       <%}%>
     </div>
 

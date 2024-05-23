@@ -6,10 +6,10 @@ const commentController = {
       const { id } = req.user;
       const { content, articleId } = req.body;
       await Comment.create({ content, articleId, userId: id });
-      res.redirect(`/articles/${articleId}`);
-    } catch (error) {
+      return res.redirect(`/articles/${articleId}`);
+    } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al crear el comentario");
+      return res.send("Failed to create the comment");
     }
   },
 };

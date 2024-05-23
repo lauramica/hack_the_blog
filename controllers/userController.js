@@ -12,17 +12,17 @@ const userController = {
       });
     } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al acceder a los artículos.");
+      return res.send("Failed to show the users admin");
     }
   },
 
   show: async (req, res) => {
     try {
       const user = await User.findByPk(req.params.id, { include: Role });
-      res.render("userProfile", { user });
+      return res.render("userProfile", { user });
     } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al cargar el perfil");
+      return res.send("Failed to show user profile");
     }
   },
 
@@ -31,7 +31,7 @@ const userController = {
       return res.render("createUser");
     } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al cargar el formulario.");
+      return res.send("Failed to show the page");
     }
   },
 
@@ -42,7 +42,7 @@ const userController = {
       return res.redirect("/login");
     } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al crear su usuario.");
+      return res.send("Failed to create user");
     }
   },
 
@@ -50,10 +50,10 @@ const userController = {
     try {
       const roles = await Role.findAll();
       const user = await User.findByPk(req.params.id);
-      res.render("editUser", { user, roles });
+      return res.render("editUser", { user, roles });
     } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al cargar la página");
+      return res.send("Failed to show the page");
     }
   },
 
@@ -64,10 +64,10 @@ const userController = {
 
       await User.update({ firstname, lastname, email, roleId }, { where: { id } });
 
-      res.redirect("/users");
+      return res.redirect("/users");
     } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al modificar el artículo");
+      return res.send("Failed to edit user");
     }
   },
 
@@ -75,9 +75,9 @@ const userController = {
     try {
       await Article.destroy({ where: { userId: req.params.id } });
       await User.destroy({ where: { id: req.params.id } });
-      res.redirect("/users");
+      return res.redirect("/users");
     } catch (err) {
-      res.send("Ha ocurrido un error al eliminar el usuario");
+      return res.send("Failed to delete the user");
     }
   },
 };

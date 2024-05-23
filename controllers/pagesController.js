@@ -10,10 +10,10 @@ const pageController = {
         include: User,
         order: [["createdAt", "DESC"]],
       });
-      res.render("home", { articles, moment });
-    } catch (error) {
+      return res.render("home", { articles, moment });
+    } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al cargar los artículos");
+      return res.send("Failed to show the home page");
     }
   },
   showLogin: async (req, res) => {
@@ -23,9 +23,9 @@ const pageController = {
         order: [["createdAt", "DESC"]],
       });
       res.render("login", { articles });
-    } catch (error) {
+    } catch (err) {
       console.error(err);
-      res.send("Ha ocurrido un error al cargar los artículos");
+      res.send("Failed to show the page");
     }
   },
 
@@ -35,20 +35,17 @@ const pageController = {
   }),
 
   logout: (req, res, next) => {
-    req.logout(function (err) {
-      if (err) {
-        return next(err);
-      }
-      res.redirect("/");
-    });
-  },
-
-  showContact: async (req, res) => {
-    res.render("contact");
-  },
-
-  showAboutUs: async (req, res) => {
-    res.render("aboutUs");
+    try {
+      req.logout(function (err) {
+        if (err) {
+          return next(err);
+        }
+        return res.redirect("/");
+      });
+    } catch (err) {
+      console.error(err);
+      return res.send("Failed to logout");
+    }
   },
 };
 
